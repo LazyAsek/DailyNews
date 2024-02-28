@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import urllib.request 
 import inflect
+from scipy.io import wavfile
+import math
 
 #get requested site
 def findSite(link):
@@ -60,4 +62,24 @@ def numsToWords(text):
             #no number found just add next
             else:
                 finalText+=text[pos]
+    print("changes ready")
     return finalText
+
+def cutWav(orginal, name, start, end):
+    # Read the WAV file
+    sample_rate, data = wavfile.read(f"assets/{orginal}.wav")
+    
+    # Convert start and end times to sample indices
+    start = int(start * sample_rate)
+    end = int(end * sample_rate)
+    
+    # Slice the audio data
+    cut_data = data[start:end]
+    
+    # Write the sliced data to a new WAV file
+    wavfile.write(f"assets/{name}.wav", sample_rate, cut_data)
+
+def getDuration(name):
+    #getting duration of wav file
+    (rate,sig)=wavfile.read(f"assets/{name}.wav")
+    return math.ceil(len(sig)/float(rate))
