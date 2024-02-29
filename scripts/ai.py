@@ -1,9 +1,9 @@
 import transformers
 import torch
 from scipy.io import wavfile
-import math
 from diffusers import DiffusionPipeline
 from PIL import Image
+import fetch
 #gets summary of article
 def summary(text):
     summary = transformers.pipeline("summarization", model="t5-large", tokenizer="t5-large")
@@ -40,3 +40,4 @@ def generateImage(prompt):
     for i in range(0,3):
         images = pipe(prompt=prompt).images[0]
         images.save(f"assets/image{i}.png")
+        fetch.scaleimage(f"image{i}")

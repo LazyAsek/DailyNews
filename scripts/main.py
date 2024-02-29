@@ -1,6 +1,6 @@
 import fetch
 import ai
-import threading
+import video
 
 #find site with newest art list from medium
 soup =fetch.findSite("https://medium.com/blog/newsletters/medium-daily-edition")
@@ -16,7 +16,7 @@ title = newestArt[1]
 text =fetch.getText(html)
 
 #get summary of article
-sumArt = ai.summary(text)
+sumArt = ai.summary(text)+"like and subscribe"
 
 #change all numbers in int format to word format
 sumArt = fetch.numsToWords(sumArt)
@@ -31,4 +31,8 @@ ai.textToSpeach(sumArt,"article")
 duration = fetch.getDuration("article")
 
 #Get song in lenght of audio duration and add it to assets
-fetch.cutWav("song","songCut",1,duration)
+fetch.cutWav("song","songCut",2,duration)
+
+video.montage(duration,"image","article","songCut","combined")
+
+video.subtitles(sumArt,8,duration)

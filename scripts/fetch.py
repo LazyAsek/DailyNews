@@ -3,6 +3,7 @@ import urllib.request
 import inflect
 from scipy.io import wavfile
 import math
+from PIL import Image
 
 #get requested site
 def findSite(link):
@@ -83,3 +84,25 @@ def getDuration(name):
     #getting duration of wav file
     (rate,sig)=wavfile.read(f"assets/{name}.wav")
     return math.ceil(len(sig)/float(rate))
+
+def scaleimage(name):
+    #scale image to shorts format from provided image
+    im = Image.open(f"assets/{name}.png")
+    im = im.resize((2048, 2048))
+    imm = im.crop((484,0,1564,1920))
+    imm.save(f"assets/{name}.png")
+
+def splitText(text,size):
+    words= text.split()
+    finnished=[]
+    bunch=""
+    count=0
+    for w in words:
+        if count != size:
+            bunch+=" "+w
+            count+=1
+        else:
+            finnished.append(bunch)
+            bunch=""
+            count=0
+    return finnished
