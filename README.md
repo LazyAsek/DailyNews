@@ -1,3 +1,4 @@
+
 DailyNews 🚀
 
 Fully Automated AI-Powered News to YouTube Shorts Pipeline
@@ -93,4 +94,4 @@ Automated YouTube publishing should also comply with YouTube's policies, includi
 
 Built with ❤️ and Local AI.
 
-<img width="204" height="192" alt="download" src="https://github.com/user-attachments/assets/ee924a60-6168-47ee-b6ad-8088c5ff64f9" />
+<img width="220" height="211" alt="cat-cat-dance" src="https://github.com/user-attachments/assets/49e18f22-da50-43ce-af4d-8b5d7e301966" />
